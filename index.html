@@ -2,657 +2,540 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Жанна — Banana Mode 🍌</title>
-
-<style>
-:root {
-    --yellow: #ffdb38;
-    --yellow-light: #fff2a6;
-    --blue: #244577;
-    --blue-light: #dff2ff;
-    --cream: #fffdf4;
-    --text: #18345e;
-    --white: #ffffff;
-    --border: #e9d98b;
-}
-
-* {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: "Trebuchet MS", Arial, sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    line-height: 1.65;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.container {
-    width: min(1080px, 90%);
-    margin: auto;
-}
-
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--yellow);
-    border-bottom: 3px solid var(--blue);
-}
-
-.nav-inner {
-    min-height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 900;
-}
-
-.logo span {
-    font-size: 28px;
-}
-
-.links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.links a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-}
-
-button {
-    font: inherit;
-    cursor: pointer;
-}
-
-.theme {
-    border: 2px solid var(--blue);
-    border-radius: 25px;
-    padding: 7px 12px;
-    background: white;
-    color: var(--blue);
-}
-
-.hero {
-    background: linear-gradient(120deg, #a9e2ff, #e4f7ff);
-    overflow: hidden;
-    border-bottom: 5px solid white;
-}
-
-.hero-inner {
-    min-height: 380px;
-    padding: 55px 0;
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    align-items: center;
-    gap: 30px;
-}
-
-.hello {
-    font-size: 19px;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: clamp(40px, 5vw, 62px);
-    line-height: 1.08;
-    margin: 15px 0;
-    color: var(--blue);
-}
-
-.highlight {
-    background: var(--yellow);
-    display: inline;
-    padding: 0 8px;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    border-radius: 9px;
-}
-
-p {
-    color: #3b5576;
-}
-
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.btn {
-    display: inline-block;
-    border: 2px solid var(--blue);
-    border-radius: 30px;
-    padding: 11px 20px;
-    font-weight: bold;
-    transition: transform .2s;
-}
-
-.btn:hover {
-    transform: translateY(-4px) rotate(-1deg);
-}
-
-.btn.primary {
-    background: var(--yellow);
-}
-
-.minion-card {
-    min-height: 260px;
-    background: rgba(255,255,255,.45);
-    border: 3px dashed #80c8f1;
-    border-radius: 35px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: bob 3s ease-in-out infinite;
-}
-
-.minion {
-    position: relative;
-    width: 155px;
-    height: 185px;
-    background: #ffcf24;
-    border: 3px solid #c79d1c;
-    border-radius: 48% 48% 28% 28%;
-    box-shadow: inset -12px 0 rgba(200,150,0,.12);
-}
-
-.hair {
-    position: absolute;
-    top: -12px;
-    left: 52px;
-    font-size: 24px;
-    transform: rotate(-15deg);
-}
-
-.goggles {
-    position: absolute;
-    top: 40px;
-    left: 27px;
-    width: 100px;
-    height: 53px;
-    border: 9px solid #a9afb6;
-    border-radius: 35px;
-    background: white;
-    box-shadow: 0 0 0 3px #646f7d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.eye {
-    width: 26px;
-    height: 30px;
-    border-radius: 50%;
-    background: #a96c3b;
-    border: 5px solid #fff;
-    box-shadow: 0 0 0 2px #49372b;
-}
-
-.smile {
-    position: absolute;
-    top: 103px;
-    left: 50px;
-    width: 55px;
-    height: 27px;
-    border-bottom: 5px solid #58382b;
-    border-radius: 50%;
-}
-
-.overalls {
-    position: absolute;
-    bottom: -2px;
-    left: 15px;
-    width: 119px;
-    height: 62px;
-    background: #3277b8;
-    border: 3px solid #225583;
-    border-radius: 12px 12px 20px 20px;
-}
-
-.overalls::before,
-.overalls::after {
-    content: "";
-    position: absolute;
-    top: -25px;
-    width: 20px;
-    height: 33px;
-    background: #3277b8;
-    border: 3px solid #225583;
-}
-
-.overalls::before {
-    left: 8px;
-    transform: rotate(-14deg);
-}
-
-.overalls::after {
-    right: 8px;
-    transform: rotate(14deg);
-}
-
-.pocket {
-    position: absolute;
-    top: 12px;
-    left: 39px;
-    border: 2px solid #225583;
-    border-radius: 4px;
-    padding: 0 7px;
-    color: #163b65;
-    font-size: 13px;
-}
-
-.banana {
-    font-size: 40px;
-    animation: bob 2s ease-in-out infinite;
-}
-
-.minion-caption {
-    font-weight: 900;
-    font-size: 20px;
-    margin-top: 14px;
-}
-
-@keyframes bob {
-    0%, 100% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-7px) rotate(2deg); }
-}
-
-section {
-    padding: 38px 0;
-    scroll-margin-top: 75px;
-}
-
-h2 {
-    font-size: 28px;
-    margin: 0 0 18px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 20px;
-}
-
-.card {
-    padding: 24px;
-    border-radius: 20px;
-    border: 2px solid var(--border);
-    background: white;
-    box-shadow: 0 6px 0 rgba(36,69,119,.06);
-    transition: transform .2s, box-shadow .2s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 0 rgba(36,69,119,.08);
-}
-
-.info {
-    background: #fff5bd;
-}
-
-.info p {
-    margin: 9px 0;
-}
-
-.skills-panel {
-    padding: 24px;
-    border-radius: 20px;
-    background: var(--blue-light);
-    border: 2px solid #b8e2ff;
-}
-
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.skill {
-    background: white;
-    border: 1px solid #badcf3;
-    padding: 9px 16px;
-    border-radius: 30px;
-    font-weight: bold;
-}
-
-.skill:first-child {
-    background: var(--yellow);
-    border-color: var(--yellow);
-}
-
-.projects-panel {
-    padding: 24px;
-    background: #fff9dc;
-    border: 2px solid #ffeb9a;
-    border-radius: 22px;
-}
-
-.projects {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.project-icon {
-    font-size: 43px;
-}
-
-.project h3 {
-    margin: 6px 0;
-}
-
-.project p {
-    font-size: 14px;
-}
-
-.project a {
-    color: #2469a8;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.contact {
-    text-align: center;
-    padding: 45px 0;
-    background: var(--yellow);
-    border-top: 4px solid white;
-}
-
-.contact p {
-    color: var(--blue);
-}
-
-footer {
-    background: var(--blue);
-    color: white;
-    padding: 20px 0;
-    font-size: 14px;
-}
-
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-body.dark {
-    --cream: #18263d;
-    --text: #fff4c4;
-    --white: #243956;
-    --border: #5b7191;
-    background: #18263d;
-    color: #fff4c4;
-}
-
-body.dark .card,
-body.dark .projects-panel,
-body.dark .skills-panel {
-    background: #243956;
-    color: #fff4c4;
-}
-
-body.dark p {
-    color: #d4e4f7;
-}
-
-body.dark .info {
-    background: #3a4251;
-}
-
-body.dark .skill {
-    color: #18345e;
-}
-
-@media (max-width: 760px) {
-    .nav-inner {
-        padding: 12px 0;
-        flex-wrap: wrap;
-    }
-
-    .links {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .hero-inner,
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-inner {
-        padding: 40px 0;
-    }
-
-    .projects {
-        grid-template-columns: 1fr;
-    }
-
-    .minion-card {
-        min-height: 260px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жанна — Портфолио</title>
+
+    <style>
+        :root {
+            --bg: #f8f9fc;
+            --surface: #ffffff;
+            --text: #20283b;
+            --muted: #788196;
+            --accent: #6279d9;
+            --border: #e8ebf3;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1040px, 90%);
+            margin: auto;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(248, 249, 252, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 750;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            min-height: 480px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 50px;
+            padding: 70px 0;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(40px, 5vw, 62px);
+            line-height: 1.12;
+            letter-spacing: -2px;
+            margin: 20px 0;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        .hero p {
+            max-width: 490px;
+            font-size: 17px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 21px;
+            border-radius: 9px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .visual {
+            min-height: 310px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #e4eaff, #d4e6f8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual::before,
+        .visual::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(98, 121, 217, 0.18);
+            border-radius: 50%;
+        }
+
+        .visual::before {
+            width: 250px;
+            height: 250px;
+        }
+
+        .visual::after {
+            width: 190px;
+            height: 190px;
+        }
+
+        .code-symbol {
+            z-index: 1;
+            font-family: monospace;
+            font-size: 75px;
+            font-weight: 700;
+            color: var(--accent);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        section {
+            padding: 55px 0;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 72px;
+        }
+
+        .section-heading {
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            font-size: 30px;
+            letter-spacing: -1px;
+            margin: 0 0 8px;
+        }
+
+        .section-heading p {
+            margin: 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(32, 40, 59, 0.06);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .facts {
+            display: grid;
+            gap: 15px;
+        }
+
+        .fact {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .fact:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .fact span:first-child {
+            color: var(--muted);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 9px;
+            font-size: 14px;
+        }
+
+        .skill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .project-number {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .project h3 {
+            margin-top: 22px;
+        }
+
+        .project p {
+            font-size: 14px;
+            min-height: 70px;
+        }
+
+        .project a {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 65px 20px;
+            border-radius: 20px;
+            background: #e9edff;
+            margin: 40px 0 55px;
+        }
+
+        .contact p {
+            max-width: 450px;
+            margin: 10px auto;
+        }
+
+        .contact .buttons {
+            justify-content: center;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        @media (max-width: 760px) {
+            .nav-inner {
+                padding: 14px 0;
+                flex-wrap: wrap;
+            }
+
+            .links {
+                order: 3;
+                width: 100%;
+                gap: 16px;
+            }
+
+            .hero,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 45px 0;
+                gap: 30px;
+            }
+
+            .visual {
+                min-height: 240px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .project p {
+                min-height: 0;
+            }
+
+            .fact {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<nav>
-    <div class="container nav-inner">
-        <a class="logo" href="#home">👓 Жанна</a>
+    <nav>
+        <div class="container nav-inner">
+            <a class="logo" href="#home">zhanna<span>.</span></a>
 
-        <div class="links">
-            <a href="#home">Главная</a>
-            <a href="#about">Обо мне</a>
-            <a href="#skills">Навыки</a>
-            <a href="#projects">Проекты</a>
-            <a href="#contact">Контакты</a>
-        </div>
-
-        <button class="theme" id="theme">☀️ / 🌙</button>
-    </div>
-</nav>
-
-<header class="hero" id="home">
-    <div class="container hero-inner">
-        <div>
-            <div class="hello">Привет! 🍌</div>
-            <h1>
-                Я Жанна,<br>
-                <span class="highlight">начинающий разработчик</span>
-            </h1>
-            <p>
-                Люблю программировать, решать сложные задачи
-                и создавать что-то полезное. Сейчас изучаю
-                C++, алгоритмы и веб-технологии.
-            </p>
-            <div class="buttons">
-                <a class="btn primary" href="#projects">
-                    🍌 Мои проекты →
-                </a>
-                <a class="btn" href="#contact">
-                    ✉️ Связаться
-                </a>
+            <div class="links">
+                <a href="#about">Обо мне</a>
+                <a href="#skills">Навыки</a>
+                <a href="#projects">Проекты</a>
+                <a href="#contact">Контакты</a>
             </div>
         </div>
+    </nav>
 
-        
-<div class="minion-card">
-    <span class="banana banana-top">🍌</span>
-    <span class="floating-star star-left">✦</span>
-    <span class="floating-star star-right">✧</span>
-
-    <div class="minion">
-        <div class="hair hair-one"></div>
-        <div class="hair hair-two"></div>
-
-        <div class="goggles">
-            <div class="eye">
-                <div class="iris">
-                    <div class="pupil"></div>
-                </div>
-            </div>
-            <div class="eye">
-                <div class="iris">
-                    <div class="pupil"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mouth"></div>
-
-        <div class="overall">
-            <div class="strap strap-left"></div>
-            <div class="strap strap-right"></div>
-            <div class="pocket">G</div>
-        </div>
-
-        <div class="arm arm-left"></div>
-        <div class="arm arm-right"></div>
-
-        <div class="leg leg-left"></div>
-        <div class="leg leg-right"></div>
-
-        <div class="shoe shoe-left"></div>
-        <div class="shoe shoe-right"></div>
-    </div>
-
-    <div class="minion-caption">
-        <span>🍌</span> BANANA MODE: ON! <span>🍌</span>
-    </div>
-</div>
-
-<main class="container">
-    <section id="about">
-        <div class="about-grid">
+    <main class="container">
+        <header class="hero" id="home">
             <div>
-                <h2>🍌 Обо мне</h2>
+                <div class="eyebrow">Портфолио · 2026</div>
+
+                <h1>
+                    Привет, я Жанна.<br>
+                    <span>Создаю и изучаю.</span>
+                </h1>
+
                 <p>
-                    Я студентка, увлекаюсь программированием
-                    и технологиями. Мне нравится изучать новое,
-                    разбираться в сложных задачах и создавать проекты,
-                    которые приносят пользу.
+                    Я студентка и начинающий разработчик.
+                    Изучаю программирование, алгоритмы и веб-технологии,
+                    превращая идеи в работающие проекты.
                 </p>
-                <p>
-                    Моя цель — постоянно развиваться,
-                    совершенствовать навыки и не забывать
-                    иногда отдыхать. 💙
-                </p>
+
+                <div class="buttons">
+                    <a class="btn primary" href="#projects">
+                        Смотреть проекты →
+                    </a>
+                    <a class="btn" href="#about">
+                        Узнать обо мне
+                    </a>
+                </div>
             </div>
 
-            <div class="card info">
-                <h2>👓 Немного обо мне</h2>
-                <p>🎓 <strong>Статус:</strong> студентка</p>
-                <p>💻 <strong>Изучаю:</strong> C++ и алгоритмы</p>
-                <p>🍌 <strong>Режим:</strong> учусь и прокачиваюсь</p>
-                <p>⭐ <strong>Девиз:</strong> Keep going!</p>
+            <div class="visual">
+                <div class="code-symbol">&lt;/&gt;</div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section id="skills">
-        <div class="skills-panel">
-            <h2>👓 Навыки</h2>
+        <section id="about">
+            <div class="section-heading">
+                <h2>Обо мне</h2>
+                <p>Немного о том, чем я занимаюсь.</p>
+            </div>
+
+            <div class="about-grid">
+                <article class="card">
+                    <h3>Учусь создавать интересные вещи</h3>
+                    <p>
+                        Мне нравится разбираться в сложных задачах,
+                        искать красивые решения и узнавать, как устроены
+                        технологии. Сейчас я развиваю навыки
+                        программирования и работаю над своими первыми
+                        проектами.
+                    </p>
+                </article>
+
+                <article class="card facts">
+                    <div class="fact">
+                        <span>Статус</span>
+                        <strong>Студентка</strong>
+                    </div>
+                    <div class="fact">
+                        <span>Основной язык</span>
+                        <strong>C++</strong>
+                    </div>
+                    <div class="fact">
+                        <span>Изучаю</span>
+                        <strong>Web · Algorithms</strong>
+                    </div>
+                    <div class="fact">
+                        <span>Сейчас</span>
+                        <strong>Развиваюсь</strong>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-heading">
+                <h2>Навыки</h2>
+                <p>Технологии и инструменты, с которыми я знакомлюсь.</p>
+            </div>
+
             <div class="skills">
-                <div class="skill">💻 C++</div>
-                <div class="skill">🧠 Алгоритмы</div>
-                <div class="skill">🐙 Git & GitHub</div>
-                <div class="skill">🌐 HTML & CSS</div>
-                <div class="skill">🐧 Linux</div>
+                <div class="skill">C++</div>
+                <div class="skill">Алгоритмы</div>
+                <div class="skill">Структуры данных</div>
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">Git</div>
+                <div class="skill">GitHub</div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects">
-        <div class="projects-panel">
-            <h2>🍌 Мои проекты</h2>
+        <section id="projects">
+            <div class="section-heading">
+                <h2>Избранные проекты</h2>
+                <p>Место для учебных и личных работ.</p>
+            </div>
+
             <div class="projects">
                 <article class="card project">
-                    <div class="project-icon">💻</div>
+                    <div class="project-number">PROJECT / 01</div>
                     <h3>Алгоритмы на C++</h3>
                     <p>
-                        Решения задач по алгоритмам
-                        и структурам данных.
+                        Решения задач по сортировкам, поиску,
+                        структурам данных и другим алгоритмам.
                     </p>
                     <a href="https://github.com/">
-                        Смотреть код →
+                        Смотреть код ↗
                     </a>
                 </article>
 
                 <article class="card project">
-                    <div class="project-icon">🌐</div>
-                    <h3>Мой сайт</h3>
+                    <div class="project-number">PROJECT / 02</div>
+                    <h3>Личное портфолио</h3>
                     <p>
-                        Личное портфолио в стиле
-                        миньонов, созданное с HTML и CSS.
+                        Мой сайт, созданный с помощью HTML и CSS
+                        и опубликованный на GitHub Pages.
                     </p>
-                    <a href="#home">Смотреть сайт →</a>
+                    <a href="#home">
+                        Открыть сайт ↗
+                    </a>
                 </article>
 
                 <article class="card project">
-                    <div class="project-icon">🧩</div>
+                    <div class="project-number">PROJECT / 03</div>
                     <h3>Следующий проект</h3>
                     <p>
-                        Здесь появится новая работа.
-                        To be continued!
+                        Здесь появится моя следующая работа
+                        по мере изучения новых технологий.
                     </p>
-                    <a href="#contact">Скоро здесь →</a>
+                    <a href="#contact">
+                        Скоро появится ↗
+                    </a>
                 </article>
             </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2>Давайте знакомиться</h2>
+            <p>
+                Открыта новым идеям, интересным задачам
+                и возможности учиться у других.
+            </p>
+
+            <div class="buttons">
+                <a class="btn primary"
+                   href="https://github.com/">
+                    Мой GitHub ↗
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <span>© 2026 Жанна</span>
+            <span>Создано с интересом к технологиям.</span>
         </div>
-    </section>
-</main>
-
-<section class="contact" id="contact">
-    <div class="container">
-        <h2>✉️ Контакты</h2>
-        <p>Буду рада новым знакомствам и интересным проектам!</p>
-        <div class="buttons" style="justify-content:center">
-            <a class="btn" href="https://github.com/">
-                💙 Мой GitHub
-            </a>
-        </div>
-        <p>Keep going! 🍌</p>
-    </div>
-</section>
-
-<footer>
-    <div class="container footer-inner">
-        <span>Жанна · 2026</span>
-        <span>Большие цели начинаются с маленьких шагов 💛</span>
-    </div>
-</footer>
-
-<script>
-const themeButton = document.getElementById("theme");
-
-themeButton.addEventListener("click", function () {
-    document.body.classList.toggle("dark");
-});
-</script>
+    </footer>
 </body>
 </html>
