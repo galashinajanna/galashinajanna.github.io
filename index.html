@@ -4,102 +4,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моё портфолио</title>
+    <title>Жанна — Портфолио</title>
 
     <style>
+        :root {
+            --bg: #0b1020;
+            --card: #131b30;
+            --text: #eef0ff;
+            --muted: #a5afca;
+            --accent: #9180ff;
+            --border: #26314d;
+        }
+
+        body.light {
+            --bg: #f4f5fc;
+            --card: #ffffff;
+            --text: #202641;
+            --muted: #65708c;
+            --accent: #6953dc;
+            --border: #dfe3f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
+            background: var(--bg);
+            color: var(--text);
             font-family: Arial, sans-serif;
-            background: #f4f5fa;
-            color: #242b43;
-            line-height: 1.6;
-        }
-
-        header {
-            background: #242b43;
-            color: white;
-            text-align: center;
-            padding: 70px 20px;
-        }
-
-        header h1 {
-            font-size: 42px;
-        }
-
-        header p {
-            color: #d5dcf5;
-        }
-
-        main {
-            max-width: 750px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        section {
-            background: white;
-            padding: 24px;
-            margin-bottom: 20px;
-            border-radius: 14px;
-        }
-
-        h2 {
-            color: #5265b5;
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
         }
 
         a {
-            color: #5265b5;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1050px, 90%);
+            margin: auto;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span,
+        .gradient {
+            color: var(--accent);
+        }
+
+        .links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        button {
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .theme {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .hero {
+            padding: 85px 0;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hello {
+            color: var(--accent);
+            font-size: 17px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.15;
+            margin: 15px 0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        .hero p {
+            max-width: 530px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 30px;
+            border: 1px solid var(--accent);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .art {
+            min-height: 300px;
+            border-radius: 40% 40% 30% 30%;
+            background:
+                radial-gradient(circle at 50% 35%,
+                #6654bd 0%, #25234d 40%,
+                var(--card) 75%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 110px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        section {
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 68px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 25px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .facts p {
+            margin: 8px 0;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 10px 18px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: var(--card);
+        }
+
+        .skill span {
+            color: var(--accent);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .project-icon {
+            font-size: 35px;
+        }
+
+        .project h3 {
+            margin-bottom: 5px;
+        }
+
+        .project p {
+            font-size: 14px;
+        }
+
+        .project a {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 65px 0;
         }
 
         footer {
-            text-align: center;
-            padding: 20px;
+            border-top: 1px solid var(--border);
+            padding: 25px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 750px) {
+            .nav-inner {
+                padding: 12px 0;
+                flex-wrap: wrap;
+            }
+
+            .links {
+                order: 3;
+                width: 100%;
+                gap: 14px;
+            }
+
+            .hero,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 55px 0;
+                gap: 30px;
+            }
+
+            .art {
+                min-height: 230px;
+                font-size: 85px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Привет! Я Жанна</h1>
-        <p>Студентка · Начинающий разработчик</p>
-        <p>Изучаю программирование и создаю свои проекты.</p>
-    </header>
+    <nav>
+        <div class="container nav-inner">
+            <a class="logo" href="#home"><span>&lt;/&gt;</span> Жанна</a>
+
+            <div class="links">
+                <a href="#home">Главная</a>
+                <a href="#about">Обо мне</a>
+                <a href="#skills">Навыки</a>
+                <a href="#projects">Проекты</a>
+                <a href="#contact">Контакты</a>
+            </div>
+
+            <button class="theme" id="theme" aria-label="Сменить тему">
+                ☾
+            </button>
+        </div>
+    </nav>
 
     <main>
-        <section>
-            <h2>Обо мне</h2>
-            <p>
-                Я изучаю программирование, алгоритмы
-                и структуры данных. Люблю разбираться
-                в сложных задачах и узнавать новое.
-            </p>
-        </section>
+        <div class="container">
+            <header class="hero" id="home">
+                <div>
+                    <div class="hello">Привет! 👋</div>
+                    <h1>
+                        Я Жанна,<br>
+                        <span class="gradient">начинающий разработчик</span>
+                    </h1>
 
-        <section>
-            <h2>Мои навыки</h2>
-            <ul>
-                <li>C++</li>
-                <li>Алгоритмы и структуры данных</li>
-                <li>Git и GitHub</li>
-                <li>HTML и CSS</li>
-            </ul>
-        </section>
+                    <p>
+                        Люблю программировать, решать сложные задачи
+                        и создавать что-то полезное. Сейчас изучаю
+                        C++, алгоритмы и веб-технологии.
+                    </p>
 
-        <section>
-            <h2>Мои проекты</h2>
-            <p>Учебные задачи по C++ и алгоритмам.</p>
-            <a href="https://github.com/">Мой GitHub</a>
-        </section>
+                    <div class="buttons">
+                        <a class="btn primary" href="#projects">
+                            Мои проекты ↗
+                        </a>
+                        <a class="btn" href="#contact">
+                            Связаться
+                        </a>
+                    </div>
+                </div>
 
-        <section>
-            <h2>Контакты</h2>
-            <p>Здесь можно добавить ссылки на свои контакты.</p>
-        </section>
+                <div class="art" aria-label="Кот за компьютером">
+                    🐈‍⬛
+                </div>
+            </header>
+
+            <section id="about">
+                <div class="about-grid">
+                    <div>
+                        <h2>♡ Обо мне</h2>
+                        <p>
+                            Я студентка, увлекаюсь программированием
+                            и технологиями. Мне нравится изучать новое,
+                            разбираться в сложных задачах и делать проекты,
+                            которые приносят пользу.
+                        </p>
+                        <p>
+                            Моя цель — постоянно развиваться,
+                            совершенствовать навыки и создавать
+                            интересные вещи.
+                        </p>
+                    </div>
+
+                    <div class="card facts">
+                        <p>🎓 <strong>Статус</strong><br>Студентка</p>
+                        <p>💻 <strong>Изучаю</strong><br>C++ и веб-разработку</p>
+                        <p>✨ <strong>Интересы</strong><br>Код, книги и новые идеи</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>&lt;/&gt; Навыки</h2>
+                <div class="skills">
+                    <div class="skill"><span>◆</span> C++</div>
+                    <div class="skill"><span>◆</span> Алгоритмы</div>
+                    <div class="skill"><span>◆</span> Git & GitHub</div>
+                    <div class="skill"><span>◆</span> HTML & CSS</div>
+                    <div class="skill"><span>◆</span> Решение задач</div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>▱ Мои проекты</h2>
+                <div class="projects">
+                    <article class="card project">
+                        <div class="project-icon">⌨️</div>
+                        <h3>Алгоритмы на C++</h3>
+                        <p>
+                            Решения задач по алгоритмам
+                            и структурам данных.
+                        </p>
+                        <a href="https://github.com/">
+                            Смотреть код →
+                        </a>
+                    </article>
+
+                    <article class="card project">
+                        <div class="project-icon">🌐</div>
+                        <h3>Моё портфолио</h3>
+                        <p>
+                            Персональный сайт, созданный
+                            с помощью HTML и CSS.
+                        </p>
+                        <a href="#home">
+                            Смотреть сайт →
+                        </a>
+                    </article>
+
+                    <article class="card project">
+                        <div class="project-icon">🧩</div>
+                        <h3>Новые идеи</h3>
+                        <p>
+                            Здесь появятся мои следующие
+                            учебные и личные проекты.
+                        </p>
+                        <a href="#contact">
+                            Следить за обновлениями →
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="contact" class="contact">
+                <h2>Давай знакомиться! 💌</h2>
+                <p>
+                    Есть идея или хочешь обсудить проект?
+                    Буду рада общению.
+                </p>
+                <div class="buttons" style="justify-content:center">
+                    <a class="btn primary"
+                       href="https://github.com/">
+                        Мой GitHub ↗
+                    </a>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
-        Моё портфолио · 2026
+        <div class="container footer-inner">
+            <span>Жанна · 2026</span>
+            <span>Создано с интересом к коду ♡</span>
+        </div>
     </footer>
+
+    <script>
+        const themeButton = document.getElementById("theme");
+
+        themeButton.addEventListener("click", function () {
+            document.body.classList.toggle("light");
+
+            if (document.body.classList.contains("light")) {
+                themeButton.textContent = "☀";
+            } else {
+                themeButton.textContent = "☾";
+            }
+        });
+    </script>
 </body>
 </html>
-
