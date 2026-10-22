@@ -142,14 +142,11 @@
             color: white;
             border-color: var(--accent);
         }
-
+        
         .visual {
-            min-height: 310px;
+            height: 450px;
             border-radius: 28px;
-            background: linear-gradient(145deg, #e4eaff, #d4e6f8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #e5e5e5;
             position: relative;
             overflow: hidden;
         }
@@ -366,6 +363,13 @@
                 flex-wrap: wrap;
             }
         }
+            .profile-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        filter: grayscale(100%);
+    }
     </style>
 </head>
 
