@@ -4,18 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Жанна 🎀 Hello Kitty World</title>
+<title>Жанна — Banana Mode 🍌</title>
 
 <style>
 :root {
-    --pink: #ff5c9a;
-    --hot-pink: #e83e80;
-    --pale: #fff0f6;
+    --yellow: #ffdb38;
+    --yellow-light: #fff2a6;
+    --blue: #244577;
+    --blue-light: #dff2ff;
+    --cream: #fffdf4;
+    --text: #18345e;
     --white: #ffffff;
-    --text: #614253;
-    --border: #ffd0e2;
-    --card: rgba(255,255,255,0.82);
-    --shadow: 0 8px 25px rgba(230, 80, 140, 0.10);
+    --border: #e9d98b;
 }
 
 * {
@@ -26,13 +26,9 @@
 body {
     margin: 0;
     font-family: "Trebuchet MS", Arial, sans-serif;
-    background:
-        radial-gradient(ellipse at 10% 10%, #ffe0ed, transparent 35%),
-        radial-gradient(ellipse at 90% 35%, #ffe8f1, transparent 35%),
-        #fff8fb;
+    background: var(--cream);
     color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
+    line-height: 1.65;
 }
 
 a {
@@ -40,13 +36,8 @@ a {
     text-decoration: none;
 }
 
-button {
-    font: inherit;
-    cursor: pointer;
-}
-
 .container {
-    width: min(1050px, 90%);
+    width: min(1080px, 90%);
     margin: auto;
 }
 
@@ -54,24 +45,21 @@ nav {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(255, 248, 251, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    background: var(--yellow);
+    border-bottom: 3px solid var(--blue);
 }
 
 .nav-inner {
-    min-height: 70px;
+    min-height: 68px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
 }
 
 .logo {
-    font-size: 23px;
+    font-size: 24px;
     font-weight: 900;
-    color: var(--hot-pink);
-    white-space: nowrap;
 }
 
 .logo span {
@@ -83,53 +71,65 @@ nav {
     flex-wrap: wrap;
     gap: 20px;
     font-size: 14px;
-    color: #b45a7c;
+    font-weight: bold;
 }
 
 .links a:hover {
-    color: var(--hot-pink);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
 }
 
 .theme {
+    border: 2px solid var(--blue);
+    border-radius: 25px;
+    padding: 7px 12px;
     background: white;
-    color: var(--hot-pink);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    padding: 7px 13px;
+    color: var(--blue);
 }
 
 .hero {
-    min-height: 420px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 25px;
-    align-items: center;
+    background: linear-gradient(120deg, #a9e2ff, #e4f7ff);
+    overflow: hidden;
+    border-bottom: 5px solid white;
+}
+
+.hero-inner {
+    min-height: 380px;
     padding: 55px 0;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 30px;
 }
 
 .hello {
-    color: var(--hot-pink);
     font-size: 19px;
     font-weight: bold;
 }
 
 h1 {
-    font-size: clamp(38px, 5vw, 60px);
-    line-height: 1.12;
-    color: var(--hot-pink);
+    font-size: clamp(40px, 5vw, 62px);
+    line-height: 1.08;
     margin: 15px 0;
+    color: var(--blue);
 }
 
-.gradient {
-    color: #ff88b5;
+.highlight {
+    background: var(--yellow);
+    display: inline;
+    padding: 0 8px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    border-radius: 9px;
 }
 
 p {
-    color: #795b6b;
-}
-
-.hero p {
-    max-width: 500px;
+    color: #3b5576;
 }
 
 .buttons {
@@ -141,171 +141,187 @@ p {
 
 .btn {
     display: inline-block;
-    border: 2px solid var(--pink);
+    border: 2px solid var(--blue);
     border-radius: 30px;
     padding: 11px 20px;
-    color: var(--hot-pink);
-    background: white;
-    transition: 0.2s;
+    font-weight: bold;
+    transition: transform .2s;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
+    transform: translateY(-4px) rotate(-1deg);
 }
 
 .btn.primary {
-    color: white;
-    background: linear-gradient(135deg, #ff80b0, #ed4f91);
+    background: var(--yellow);
 }
 
-.kitty {
-    min-height: 310px;
+.minion-card {
+    min-height: 260px;
+    background: rgba(255,255,255,.45);
+    border: 3px dashed #80c8f1;
+    border-radius: 35px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    position: relative;
-    background: linear-gradient(145deg, #ffe0ed, #fff5f9);
-    border: 2px solid white;
-    border-radius: 48% 48% 35% 35%;
-    box-shadow: var(--shadow);
-    animation: float 4s ease-in-out infinite;
+    align-items: center;
+    animation: bob 3s ease-in-out infinite;
 }
 
-.kitty-face {
+.minion {
     position: relative;
+    width: 155px;
+    height: 185px;
+    background: #ffcf24;
+    border: 3px solid #c79d1c;
+    border-radius: 48% 48% 28% 28%;
+    box-shadow: inset -12px 0 rgba(200,150,0,.12);
+}
+
+.hair {
+    position: absolute;
+    top: -12px;
+    left: 52px;
+    font-size: 24px;
+    transform: rotate(-15deg);
+}
+
+.goggles {
+    position: absolute;
+    top: 40px;
+    left: 27px;
+    width: 100px;
+    height: 53px;
+    border: 9px solid #a9afb6;
+    border-radius: 35px;
     background: white;
-    width: 190px;
-    height: 155px;
-    border: 3px solid #66424b;
-    border-radius: 48% 48% 43% 43%;
+    box-shadow: 0 0 0 3px #646f7d;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 48px;
 }
 
 .eye {
-    width: 12px;
-    height: 19px;
-    background: #66424b;
+    width: 26px;
+    height: 30px;
     border-radius: 50%;
-    margin-top: 20px;
+    background: #a96c3b;
+    border: 5px solid #fff;
+    box-shadow: 0 0 0 2px #49372b;
 }
 
-.nose {
+.smile {
     position: absolute;
-    top: 83px;
-    left: calc(50% - 8px);
-    width: 16px;
-    height: 11px;
-    background: #ffd85e;
-    border: 2px solid #66424b;
+    top: 103px;
+    left: 50px;
+    width: 55px;
+    height: 27px;
+    border-bottom: 5px solid #58382b;
     border-radius: 50%;
 }
 
-.whiskers {
+.overalls {
     position: absolute;
-    width: 45px;
-    height: 35px;
-    top: 80px;
+    bottom: -2px;
+    left: 15px;
+    width: 119px;
+    height: 62px;
+    background: #3277b8;
+    border: 3px solid #225583;
+    border-radius: 12px 12px 20px 20px;
 }
 
-.whiskers.left {
-    right: 100%;
-    border-top: 2px solid #66424b;
-    border-bottom: 2px solid #66424b;
-    transform: rotate(8deg);
-}
-
-.whiskers.right {
-    left: 100%;
-    border-top: 2px solid #66424b;
-    border-bottom: 2px solid #66424b;
-    transform: rotate(-8deg);
-}
-
-.bow {
+.overalls::before,
+.overalls::after {
+    content: "";
     position: absolute;
-    top: -24px;
-    right: 15px;
-    font-size: 58px;
-    transform: rotate(12deg);
+    top: -25px;
+    width: 20px;
+    height: 33px;
+    background: #3277b8;
+    border: 3px solid #225583;
 }
 
-.heart {
+.overalls::before {
+    left: 8px;
+    transform: rotate(-14deg);
+}
+
+.overalls::after {
+    right: 8px;
+    transform: rotate(14deg);
+}
+
+.pocket {
     position: absolute;
-    color: var(--pink);
-    font-size: 32px;
-    animation: pulse 2s infinite;
+    top: 12px;
+    left: 39px;
+    border: 2px solid #225583;
+    border-radius: 4px;
+    padding: 0 7px;
+    color: #163b65;
+    font-size: 13px;
 }
 
-.heart.one {
-    top: 35px;
-    left: 30px;
+.banana {
+    font-size: 40px;
+    animation: bob 2s ease-in-out infinite;
 }
 
-.heart.two {
-    right: 25px;
-    bottom: 55px;
+.minion-caption {
+    font-weight: 900;
+    font-size: 20px;
+    margin-top: 14px;
 }
 
-.heart.three {
-    top: 25px;
-    right: 35px;
-}
-
-.kitty-caption {
-    margin-top: 32px;
-    color: var(--hot-pink);
-    font-weight: bold;
-    font-size: 19px;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-9px); }
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+@keyframes bob {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-7px) rotate(2deg); }
 }
 
 section {
-    padding: 42px 0;
-    border-top: 1px solid #ffe0eb;
+    padding: 38px 0;
     scroll-margin-top: 75px;
 }
 
 h2 {
-    color: var(--hot-pink);
-    font-size: 27px;
-    margin-top: 0;
+    font-size: 28px;
+    margin: 0 0 18px;
 }
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.1fr .9fr;
     gap: 20px;
 }
 
 .card {
-    background: var(--card);
-    border: 1px solid var(--border);
+    padding: 24px;
     border-radius: 20px;
-    padding: 23px;
-    box-shadow: var(--shadow);
-    transition: transform 0.25s;
+    border: 2px solid var(--border);
+    background: white;
+    box-shadow: 0 6px 0 rgba(36,69,119,.06);
+    transition: transform .2s, box-shadow .2s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 0 rgba(36,69,119,.08);
 }
 
-.facts p {
-    margin: 8px 0;
+.info {
+    background: #fff5bd;
+}
+
+.info p {
+    margin: 9px 0;
+}
+
+.skills-panel {
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--blue-light);
+    border: 2px solid #b8e2ff;
 }
 
 .skills {
@@ -315,27 +331,37 @@ h2 {
 }
 
 .skill {
-    background: #ffe0ed;
-    border: 1px solid #ffd0e2;
-    color: #bd4679;
+    background: white;
+    border: 1px solid #badcf3;
+    padding: 9px 16px;
     border-radius: 30px;
-    padding: 9px 17px;
+    font-weight: bold;
+}
+
+.skill:first-child {
+    background: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.projects-panel {
+    padding: 24px;
+    background: #fff9dc;
+    border: 2px solid #ffeb9a;
+    border-radius: 22px;
 }
 
 .projects {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 17px;
+    gap: 15px;
 }
 
 .project-icon {
-    font-size: 40px;
-    margin-bottom: 5px;
+    font-size: 43px;
 }
 
 .project h3 {
-    color: #c9427a;
-    margin: 5px 0;
+    margin: 6px 0;
 }
 
 .project p {
@@ -343,71 +369,62 @@ h2 {
 }
 
 .project a {
-    color: var(--hot-pink);
+    color: #2469a8;
     font-weight: bold;
     font-size: 14px;
 }
 
 .contact {
     text-align: center;
-    padding: 55px 0;
+    padding: 45px 0;
+    background: var(--yellow);
+    border-top: 4px solid white;
 }
 
-.contact .buttons {
-    justify-content: center;
+.contact p {
+    color: var(--blue);
 }
 
 footer {
-    background: #ffe3ef;
-    border-top: 2px solid #ffd0e2;
-    padding: 22px 0;
-    color: #b94e7a;
+    background: var(--blue);
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
 }
 
 .footer-inner {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 body.dark {
-    --pale: #301b2b;
-    --white: #3b2635;
-    --text: #ffe8f1;
-    --border: #75405b;
-    --card: rgba(58, 34, 50, 0.92);
-    --shadow: 0 8px 25px rgba(0,0,0,0.15);
-    background: #241622;
-    color: #ffe8f1;
+    --cream: #18263d;
+    --text: #fff4c4;
+    --white: #243956;
+    --border: #5b7191;
+    background: #18263d;
+    color: #fff4c4;
+}
+
+body.dark .card,
+body.dark .projects-panel,
+body.dark .skills-panel {
+    background: #243956;
+    color: #fff4c4;
 }
 
 body.dark p {
-    color: #e6bfd0;
+    color: #d4e4f7;
 }
 
-body.dark nav {
-    background: rgba(36, 22, 34, 0.94);
+body.dark .info {
+    background: #3a4251;
 }
 
-body.dark .links {
-    color: #f0bad1;
-}
-
-body.dark .kitty {
-    background: linear-gradient(145deg, #4d2940, #301b2b);
-}
-
-body.dark .skill,
-body.dark footer {
-    background: #46283c;
-    color: #ffd3e5;
-}
-
-body.dark .btn:not(.primary),
-body.dark .theme {
-    background: #3b2635;
-    color: #ffb4d2;
+body.dark .skill {
+    color: #18345e;
 }
 
 @media (max-width: 760px) {
@@ -423,21 +440,21 @@ body.dark .theme {
         gap: 12px;
     }
 
-    .hero,
+    .hero-inner,
     .about-grid {
         grid-template-columns: 1fr;
     }
 
-    .hero {
-        padding-top: 35px;
-    }
-
-    .kitty {
-        min-height: 270px;
+    .hero-inner {
+        padding: 40px 0;
     }
 
     .projects {
         grid-template-columns: 1fr;
+    }
+
+    .minion-card {
+        min-height: 260px;
     }
 }
 </style>
@@ -446,9 +463,7 @@ body.dark .theme {
 <body>
 <nav>
     <div class="container nav-inner">
-        <a href="#home" class="logo">
-            <span>🎀</span> Hello Kitty 💗
-        </a>
+        <a class="logo" href="#home">👓 Жанна</a>
 
         <div class="links">
             <a href="#home">Главная</a>
@@ -458,152 +473,144 @@ body.dark .theme {
             <a href="#contact">Контакты</a>
         </div>
 
-        <button class="theme" id="theme" aria-label="Сменить тему">
-            ☀️ / 🌙
-        </button>
+        <button class="theme" id="theme">☀️ / 🌙</button>
     </div>
 </nav>
 
-<main>
-<div class="container">
-    <header class="hero" id="home">
+<header class="hero" id="home">
+    <div class="container hero-inner">
         <div>
-            <div class="hello">Привет! ♡</div>
+            <div class="hello">Привет! 🍌</div>
             <h1>
                 Я Жанна,<br>
-                <span class="gradient">начинающий разработчик</span>
+                <span class="highlight">начинающий разработчик</span>
             </h1>
-
             <p>
-                Добро пожаловать в мой маленький розовый мир!
-                Я люблю программировать, решать сложные задачи
-                и создавать красивые вещи. 🎀
+                Люблю программировать, решать сложные задачи
+                и создавать что-то полезное. Сейчас изучаю
+                C++, алгоритмы и веб-технологии.
             </p>
-
             <div class="buttons">
                 <a class="btn primary" href="#projects">
-                    🎀 Мои проекты
+                    🍌 Мои проекты →
                 </a>
                 <a class="btn" href="#contact">
-                    💌 Связаться
+                    ✉️ Связаться
                 </a>
             </div>
         </div>
 
-        <div class="kitty">
-            <span class="heart one">♥</span>
-            <span class="heart two">♡</span>
-            <span class="heart three">♥</span>
-
-            <div class="kitty-face">
-                <div class="whiskers left"></div>
-                <div class="whiskers right"></div>
-                <div class="eye"></div>
-                <div class="eye"></div>
-                <div class="nose"></div>
-                <div class="bow">🎀</div>
+        <div class="minion-card">
+            <div class="banana">🍌</div>
+            <div class="minion">
+                <div class="hair">〰️</div>
+                <div class="goggles"><div class="eye"></div></div>
+                <div class="smile"></div>
+                <div class="overalls"><div class="pocket">G</div></div>
             </div>
-
-            <div class="kitty-caption">
-                Hello Kitty World ♡
-            </div>
+            <div class="minion-caption">BANANA MODE: ON!</div>
         </div>
-    </header>
+    </div>
+</header>
 
+<main class="container">
     <section id="about">
         <div class="about-grid">
-            <div class="card">
-                <h2>🎀 Обо мне</h2>
+            <div>
+                <h2>🍌 Обо мне</h2>
                 <p>
-                    Я студентка, которая увлекается программированием
+                    Я студентка, увлекаюсь программированием
                     и технологиями. Мне нравится изучать новое,
                     разбираться в сложных задачах и создавать проекты,
-                    которыми можно гордиться.
+                    которые приносят пользу.
                 </p>
                 <p>
-                    Учиться. Создавать. Развиваться. 💗
+                    Моя цель — постоянно развиваться,
+                    совершенствовать навыки и не забывать
+                    иногда отдыхать. 💙
                 </p>
             </div>
 
-            <div class="card facts">
-                <h2>💖 Немного обо мне</h2>
+            <div class="card info">
+                <h2>👓 Немного обо мне</h2>
                 <p>🎓 <strong>Статус:</strong> студентка</p>
-                <p>💻 <strong>Изучаю:</strong> C++, алгоритмы</p>
-                <p>🎀 <strong>Любимый вайб:</strong> pink & cute</p>
-                <p>✨ <strong>Мечта:</strong> создавать классные проекты</p>
+                <p>💻 <strong>Изучаю:</strong> C++ и алгоритмы</p>
+                <p>🍌 <strong>Режим:</strong> учусь и прокачиваюсь</p>
+                <p>⭐ <strong>Девиз:</strong> Keep going!</p>
             </div>
         </div>
     </section>
 
     <section id="skills">
-        <h2>🎀 Мои навыки</h2>
-        <div class="skills">
-            <div class="skill">💻 C++</div>
-            <div class="skill">🧩 Алгоритмы</div>
-            <div class="skill">🐙 Git & GitHub</div>
-            <div class="skill">🌸 HTML & CSS</div>
-            <div class="skill">📚 Структуры данных</div>
+        <div class="skills-panel">
+            <h2>👓 Навыки</h2>
+            <div class="skills">
+                <div class="skill">💻 C++</div>
+                <div class="skill">🧠 Алгоритмы</div>
+                <div class="skill">🐙 Git & GitHub</div>
+                <div class="skill">🌐 HTML & CSS</div>
+                <div class="skill">🐧 Linux</div>
+            </div>
         </div>
     </section>
 
     <section id="projects">
-        <h2>💗 Мои проекты</h2>
+        <div class="projects-panel">
+            <h2>🍌 Мои проекты</h2>
+            <div class="projects">
+                <article class="card project">
+                    <div class="project-icon">💻</div>
+                    <h3>Алгоритмы на C++</h3>
+                    <p>
+                        Решения задач по алгоритмам
+                        и структурам данных.
+                    </p>
+                    <a href="https://github.com/">
+                        Смотреть код →
+                    </a>
+                </article>
 
-        <div class="projects">
-            <article class="card project">
-                <div class="project-icon">💻</div>
-                <h3>Алгоритмы на C++</h3>
-                <p>
-                    Мои решения задач по программированию,
-                    алгоритмам и структурам данных.
-                </p>
-                <a href="https://github.com/">
-                    Смотреть проект →
-                </a>
-            </article>
+                <article class="card project">
+                    <div class="project-icon">🌐</div>
+                    <h3>Мой сайт</h3>
+                    <p>
+                        Личное портфолио в стиле
+                        миньонов, созданное с HTML и CSS.
+                    </p>
+                    <a href="#home">Смотреть сайт →</a>
+                </article>
 
-            <article class="card project">
-                <div class="project-icon">🎀</div>
-                <h3>Pink Portfolio</h3>
-                <p>
-                    Мой личный сайт в розовом стиле,
-                    созданный с помощью HTML и CSS.
-                </p>
-                <a href="#home">Посмотреть сайт →</a>
-            </article>
-
-            <article class="card project">
-                <div class="project-icon">🧸</div>
-                <h3>Следующий проект</h3>
-                <p>
-                    Здесь появится новая работа,
-                    которой я буду гордиться!
-                </p>
-                <a href="#contact">Скоро здесь →</a>
-            </article>
+                <article class="card project">
+                    <div class="project-icon">🧩</div>
+                    <h3>Следующий проект</h3>
+                    <p>
+                        Здесь появится новая работа.
+                        To be continued!
+                    </p>
+                    <a href="#contact">Скоро здесь →</a>
+                </article>
+            </div>
         </div>
     </section>
+</main>
 
-    <section id="contact" class="contact">
-        <h2>💌 Давай дружить!</h2>
-        <p>
-            Спасибо, что заглянула на мой сайт.
-            Хорошего дня и побольше розовых бантиков! 🎀
-        </p>
-
-        <div class="buttons">
-            <a class="btn primary" href="https://github.com/">
-                💗 Мой GitHub
+<section class="contact" id="contact">
+    <div class="container">
+        <h2>✉️ Контакты</h2>
+        <p>Буду рада новым знакомствам и интересным проектам!</p>
+        <div class="buttons" style="justify-content:center">
+            <a class="btn" href="https://github.com/">
+                💙 Мой GitHub
             </a>
         </div>
-    </section>
-</div>
-</main>
+        <p>Keep going! 🍌</p>
+    </div>
+</section>
 
 <footer>
     <div class="container footer-inner">
-        <span>🎀 Жанна · 2026</span>
-        <span>Сделано с любовью ♡ Hello Kitty vibes</span>
+        <span>Жанна · 2026</span>
+        <span>Большие цели начинаются с маленьких шагов 💛</span>
     </div>
 </footer>
 
